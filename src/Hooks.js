@@ -19,7 +19,7 @@ export default class Hooks {
   post(type, callback) {
     if (!this.subject.$post[type]) {
       this.subject.$post[type] = [];
-      this.subject[type] = this._wrap(this.subject[type], type);
+      this._wrap(this.subject[type], type);
     }
 
     this.subject.$post[type].push(callback);
@@ -29,14 +29,20 @@ export default class Hooks {
 
   _trigger(type, action) {
     (this.subject[type][action] || []).forEach((hook) => {
-      hook.call(this.subject[type][action], [].slice.call(arguments, 2));
+      hook.apply(this.subject[type][action], [].slice.call(arguments, 2));
     });
   }
 
   _wrap(fn, type) {
     const self = this;
 
-    return function () {
+    this.subject[type] = function () {
+      if (self.subject[type].called) {
+        return false;
+      }
+
+      self.subject[type].called = true;
+
       self._trigger('$pre', type);
       fn.apply(fn, [].slice.call(arguments));
       self._trigger('$post', type);
