@@ -46,6 +46,8 @@ export default class Hooks {
       self._trigger('$pre', type);
       fn.apply(fn, [].slice.call(arguments));
       self._trigger('$post', type);
+
+      self.subject[type].called = false;
     };
   }
 }
