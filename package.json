@@ -4,7 +4,7 @@
   "description": "Generic Hooks and Triggers",
   "main": "index.js",
   "scripts": {
-    "build": "",
+    "dist": "webpack --config webpack.config.js",
     "test": "mocha --compilers js:babel-core/register"
   },
   "keywords": [
@@ -14,15 +14,17 @@
   "author": "João Pinto Neto <joaopintoneto@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.17.0",
-    "babel-eslint": "^7.0.0",
-    "babel-preset-es2015": "^6.16.0",
-    "babel-preset-stage-1": "^6.16.0",
-    "chai": "^3.5.0",
-    "eslint": "^3.8.1",
-    "mocha": "^3.1.2",
-    "sinon": "^1.17.6",
-    "sinon-chai": "^2.8.0"
+    "babel-core": "6.17.0",
+    "babel-eslint": "7.0.0",
+    "babel-loader": "6.2.7",
+    "babel-preset-es2015": "6.16.0",
+    "babel-preset-stage-1": "6.16.0",
+    "chai": "3.5.0",
+    "eslint": "3.8.1",
+    "mocha": "3.1.2",
+    "sinon": "1.17.6",
+    "sinon-chai": "2.8.0",
+    "webpack": "1.13.3"
   },
   "babel": {
     "presets": [
