@@ -3,6 +3,9 @@ export default class Hooks {
     subject.$pre = {};
     subject.$post = {};
     this.subject = subject;
+    // this.subject = Object.getOwnPropertyNames(subject)
+    //   .filter((a) => /^(?!data)/.test(a))
+    //   .reduce((a, b) => Object.assign(a, { [b]: subject[b] }), subject);
   }
 
   pre(type, callback) {
@@ -28,7 +31,7 @@ export default class Hooks {
   }
 
   _trigger(type, action) {
-    (this.subject[type][action] || []).forEach((hook) => {
+    (this.subject[type][action] || []).map((hook) => {
       hook.apply(this.subject[type][action], [].slice.call(arguments, 2));
     });
   }
@@ -49,5 +52,6 @@ export default class Hooks {
 
       self.subject[type].called = false;
     };
+
   }
 }
