@@ -1,6 +1,6 @@
 {
   "name": "hooksjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generic Hooks and Triggers",
   "main": "index.js",
   "scripts": {
