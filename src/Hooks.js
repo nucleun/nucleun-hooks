@@ -30,27 +30,29 @@ export default class Hooks {
     return this;
   }
 
-  _trigger(type, action) {
+  _trigger(type, action, args) {
     (this.subject[type][action] || []).map((hook) => {
-      hook.apply(this.subject[type][action], [].slice.call(arguments, 2));
+      hook.apply(this.subject[type][action], args);
     });
+
+    return Promise.resolve();
   }
 
   _wrap(fn, type) {
     const self = this;
 
-    this.subject[type] = function () {
+    return this.subject[type] = function () {
       if (self.subject[type].called) {
         return false;
       }
 
       self.subject[type].called = true;
 
-      self._trigger('$pre', type);
-      fn.apply(fn, [].slice.call(arguments));
-      self._trigger('$post', type);
+      return self._trigger('$pre', type, arguments)
+        .then(() => fn.apply(fn, arguments))
+        .then(() => self._trigger('$post', type, arguments))
+        .then(() => self.subject[type].called = false);
 
-      self.subject[type].called = false;
     };
 
   }

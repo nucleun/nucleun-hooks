@@ -6,7 +6,9 @@
 <body>
 
   <ul id="user-save-flow"></ul>
-  <!-- <button id="user-update" onclick="update()">Update user</button> -->
+  <input id="name" name="name" type="text">
+  <input id="lastName" name="lastName" type="text">
+  <button id="user-update" onclick="update()">Update user</button>
 
   <script src="../dist/hooksjs.min.js"></script>
   <script>
@@ -16,35 +18,28 @@
       constructor() {
         this.hooks = new Hooks(this);
         this.rootElement = document.getElementById('user-save-flow');
-      }
-
-      _cleanRootElement() {
-        while (this.rootElement.firstChild) {
-          this.rootElement.removeChild(this.rootElement.firstChild);
-        }
+        this.data = {};
       }
 
       _renderItem(item = {}) {
-        // console.log('_renderItem', item)
         const { description, id, name, lastName } = item;
         const node = document.createElement('LI');
         const textnode = document.createTextNode([description, name, lastName].join(' '));
         node.appendChild(textnode);
         this.rootElement.appendChild(node);
+        this.rootElement.appendChild(document.createElement('HR'));
       }
 
       getData() {
-        return this.data || {};
+        return this.data;
       }
 
       setData(data) {
         this.data = data;
-        // console.log('View::setData', this.getData());
         this.render();
       }
 
       render() {
-        // console.log('View::render', this.data);
         this._renderItem(this.getData());
       }
     }
@@ -58,34 +53,38 @@
       }
 
       _setupLifeCycle() {
-        this.hooks.pre('save', () => this.view.setData({ description: 'PRE SAVE' }))
+        this.hooks
+          .pre('save', () => this.view.setData({ description: 'PRE SAVE' }))
           .post('save', () => this.view.setData(this.data))
           .post('save', () => this.view.setData({ description: 'POST SAVE' }));
 
-        this.hooks.pre('update', () => this.view.setData({ description: 'PRE UPDATE' }))
-          .pre('update', () => { this.view.setData(this.data); })
-          .post('update', () => { this.view.setData({ description: 'POST UPDATE' }); });
+        this.hooks
+          .pre('update', () => this.view.setData({ description: 'PRE UPDATE' }))
+          .post('update', (data) => this.view.setData(data))
+          .post('update', () => this.view.setData({ description: 'POST UPDATE' }));
       }
 
       save() {
-        console.log('save', this.data);
         return this.data;
       }
 
       update(data) {
-        console.log('update', data);
         this.data = data;
       }
     }
 
     const user = new Model({ name: 'John', lastName: 'Doe' });
     user.save();
-    user.update({ name: 'João', lastName: 'Neto' });
 
-    // function update() {
-    //   const data = { name: 'João', lastName: 'Neto' };
-    //   user.update(data);
-    // }
+    function update() {
+      const data = {
+        description: Date.now(),
+        name: document.getElementById('name').value || 'João',
+        lastName: document.getElementById('lastName').value || 'Neto'
+      };
+
+      user.update(data);
+    }
 
   </script>
 </body>
