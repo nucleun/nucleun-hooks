@@ -1,4 +1,4 @@
-# hooksjs
+# nucleun-hooksjs
 *Generic Hooks and Triggers*
 
 Runs a stack of new functions before or after (pre / post) of the original function
