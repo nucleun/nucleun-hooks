@@ -1,15 +1,15 @@
-# hooksjs
+# nucleun-hooksjs
 *Generic Hooks and Triggers*
 
 Runs a stack of new functions before or after (pre / post) of the original function
 
 ## Install
 ```
-npm install hoohsjs
+npm install nucleun-hooksjs
 ```
 
 ## See live example:
-<p data-height="263" data-theme-id="0" data-slug-hash="ZBzKBy" data-default-tab="result" data-user="joaoneto" data-embed-version="2" data-pen-title="HooksJS" class="codepen">See the Pen <a href="http://codepen.io/joaoneto/pen/ZBzKBy/">HooksJS</a> by Joo Neto (<a href="http://codepen.io/joaoneto">@joaoneto</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<p data-height="263" data-theme-id="0" data-slug-hash="ZBzKBy" data-default-tab="result" data-user="joaoneto" data-embed-version="2" data-pen-title="HooksJS" class="codepen">See the Pen <a href="http://codepen.io/joaoneto/pen/ZBzKBy/">HooksJS</a> by João Neto (<a href="http://codepen.io/joaoneto">@joaoneto</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Examples
