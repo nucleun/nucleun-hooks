@@ -5,7 +5,7 @@ Runs a stack of new functions before or after (pre / post) of the original funct
 
 ## Install
 ```
-npm install hooksjs
+npm install nucleun-hooksjs
 ```
 
 ## See live example:
