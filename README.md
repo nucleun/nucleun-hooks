@@ -1,11 +1,11 @@
-# nucleun-hooksjs
+# nucleun-hooks
 *Generic Hooks and Triggers*
 
 Runs a stack of new functions before or after (pre / post) of the original function
 
 ## Install
 ```
-npm install nucleun-hooksjs
+npm install nucleun-hooks
 ```
 
 ## See live example:

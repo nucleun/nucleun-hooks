@@ -3,7 +3,7 @@ const webpack = require('webpack');
 module.exports = {
   entry : './src/index.js',
   output : {
-    filename : 'dist/hooksjs.min.js',
+    filename : 'dist/nucleun-hooks.min.js',
     sourceFilename : '[file].map',
     library: 'Hooksjs',
     libraryTarget: 'umd'

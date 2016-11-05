@@ -1,6 +1,6 @@
 {
-  "name": "hooksjs",
-  "version": "0.0.2",
+  "name": "nucleun-hooks",
+  "version": "0.0.3",
   "description": "Generic Hooks and Triggers",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,7 @@
     "test": "mocha --compilers js:babel-core/register"
   },
   "keywords": [
+    "nucleun",
     "hooks",
     "triggers"
   ],
