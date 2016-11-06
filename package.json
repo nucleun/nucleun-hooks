@@ -1,8 +1,8 @@
 {
   "name": "nucleun-hooks",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Generic Hooks and Triggers",
-  "main": "index.js",
+  "main": "dist/nucleun-hooks.min.js",
   "scripts": {
     "dist": "webpack --config webpack.config.js",
     "test": "mocha --compilers js:babel-core/register"
